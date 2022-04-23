@@ -1,5 +1,19 @@
+using System;
 using System.Collections.Generic;
 using System.Drawing;
+
+/*
+
+ █████╗ ███╗   ███╗██╗██████╗          ██╗ ██████╗███████╗
+██╔══██╗████╗ ████║██║██╔══██╗         ██║██╔════╝██╔════╝
+███████║██╔████╔██║██║██████╔╝         ██║██║     ███████╗
+██╔══██║██║╚██╔╝██║██║██╔══██╗    ██   ██║██║     ╚════██║
+██║  ██║██║ ╚═╝ ██║██║██║  ██║    ╚█████╔╝╚██████╗███████║
+╚═╝  ╚═╝╚═╝     ╚═╝╚═╝╚═╝  ╚═╝     ╚════╝  ╚═════╝╚══════╝
+                Developed by Amir JCS  
+        https://github.com/AmirMahdyJebreily                                                       
+
+*/
 
 namespace AmirJCS
 {
@@ -60,5 +74,18 @@ namespace AmirJCS
             return Color.FromArgb(color.A, (byte)red, (byte)green, (byte)blue);
         }
 
+        public static Color SelectThemeColor()
+        {
+            Random random = new Random();
+            int tempIndex = 0;
+            int index = random.Next(ThemeColor.ColorList.Count);
+            while (tempIndex == index)
+            {
+                index = random.Next(ThemeColor.ColorList.Count);
+            }
+            tempIndex = index;
+            string color = ThemeColor.ColorList[index];
+            return ColorTranslator.FromHtml(color);
+        }
     }
 }
